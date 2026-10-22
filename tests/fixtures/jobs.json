@@ -1,0 +1,276 @@
+{
+  "jobs": [
+    {
+      "id": "a1b2c3d4e5f1",
+      "name": "Nightly vault backup push",
+      "prompt": "unused",
+      "script": "backup_push.py",
+      "no_agent": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "display": "0 4 * * *"
+      },
+      "schedule_display": "0 4 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 61
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "created_at": "2026-08-22T01:27:26.047433-04:00",
+      "next_run_at": "2026-10-23T04:00:00-04:00",
+      "last_run_at": "2026-10-22T04:01:11.243260-04:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstdout:\nbackup failures:\n  - snapshot copy failed for plugins: [WinError 183] Cannot create a file when that file already exists: '<home>\\\\backup\\\\hermes\\\\plugins'",
+      "last_delivery_error": null,
+      "failure_streak": 9,
+      "deliver": "local",
+      "last_dispatch": {
+        "scheduled_at": "2026-10-22T04:00:00-04:00",
+        "dispatched_at": "2026-10-22T04:00:47.727138-04:00",
+        "lateness_seconds": 47.7,
+        "kind": "on_time"
+      },
+      "last_failure": {
+        "at": "2026-10-22T04:01:11.243260-04:00",
+        "detail": "Script exited with code 1\nstdout:\nbackup failures:\n  - snapshot copy failed for plugins: [WinError 183] Cannot create a file when that file already exists: '<home>\\\\backup\\\\hermes\\\\plugins'"
+      }
+    },
+    {
+      "id": "b2c3d4e5f6a2",
+      "name": "Nightly session summary",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 57
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-23T03:00:00-04:00",
+      "last_run_at": "2026-10-22T03:09:03.727905-04:00",
+      "last_status": "ok",
+      "last_error": null,
+      "failure_streak": 0,
+      "deliver": "local",
+      "last_dispatch": {
+        "scheduled_at": "2026-10-22T03:00:00-04:00",
+        "dispatched_at": "2026-10-22T03:00:41.114402-04:00",
+        "lateness_seconds": 41.1,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "c3d4e5f6a7b3",
+      "name": "Weekly portfolio maintenance",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 11 * * 1",
+        "display": "0 11 * * 1"
+      },
+      "schedule_display": "0 11 * * 1",
+      "repeat": {
+        "times": null,
+        "completed": 9
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-26T11:00:00-04:00",
+      "last_run_at": "2026-10-19T14:03:29.232080-04:00",
+      "last_status": "ok",
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-19T11:00:00-04:00",
+        "dispatched_at": "2026-10-19T11:00:52.902111-04:00",
+        "lateness_seconds": 52.9,
+        "kind": "late"
+      }
+    },
+    {
+      "id": "d4e5f6a7b8c4",
+      "name": "Lead engine scan",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8,13,18 * * *",
+        "display": "0 8,13,18 * * *"
+      },
+      "schedule_display": "0 8,13,18 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 240
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-22T09:00:00-04:00",
+      "last_run_at": "2026-10-22T08:01:07.763078-04:00",
+      "last_status": "ok",
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-22T08:00:00-04:00",
+        "dispatched_at": "2026-10-22T08:00:44.101010-04:00",
+        "lateness_seconds": 44.1,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "e5f6a7b8c9d5",
+      "name": "Application response sweep",
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 12 * * *",
+        "display": "30 12 * * *"
+      },
+      "schedule_display": "30 12 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 33
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-22T12:30:00-04:00",
+      "last_run_at": "2026-10-21T15:02:43.913299-04:00",
+      "last_status": "delivery_failed",
+      "last_error": null,
+      "last_delivery_error": "no delivery target resolved for deliver=telegram",
+      "failure_streak": 0,
+      "deliver": "telegram",
+      "last_dispatch": {
+        "scheduled_at": "2026-10-21T12:30:00-04:00",
+        "dispatched_at": "2026-10-21T12:30:38.501100-04:00",
+        "lateness_seconds": 38.5,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "f6a7b8c9d0e6",
+      "name": "Browser keepalive",
+      "schedule": {
+        "kind": "interval",
+        "minutes": 60,
+        "display": "every 60m"
+      },
+      "schedule_display": "every 60m",
+      "repeat": {
+        "times": null,
+        "completed": 412
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-22T16:07:32.416344-04:00",
+      "last_run_at": "2026-10-22T15:07:32.416344-04:00",
+      "last_status": "ok",
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-22T15:07:32.416344-04:00",
+        "dispatched_at": "2026-10-22T15:07:33.004200-04:00",
+        "lateness_seconds": 0.6,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "a7b8c9d0e1f7",
+      "name": "Stage memory batch",
+      "schedule": {
+        "kind": "once",
+        "run_at": "2026-10-16T08:00:00-04:00",
+        "display": "once at 2026-10-16 08:00"
+      },
+      "schedule_display": "once at 2026-10-16 08:00",
+      "repeat": {
+        "times": 1,
+        "completed": 1
+      },
+      "enabled": false,
+      "state": "completed",
+      "next_run_at": null,
+      "last_run_at": "2026-10-16T08:06:05.136432-04:00",
+      "last_status": "ok",
+      "failure_streak": 0
+    },
+    {
+      "id": "b8c9d0e1f2a8",
+      "name": "Paused research sweep",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 2",
+        "display": "0 9 * * 2"
+      },
+      "schedule_display": "0 9 * * 2",
+      "repeat": {
+        "times": null,
+        "completed": 6
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-10-15T12:00:00-04:00",
+      "paused_reason": "manual pause",
+      "next_run_at": null,
+      "last_run_at": "2026-10-13T09:04:00.120000-04:00",
+      "last_status": "ok",
+      "failure_streak": 0
+    },
+    {
+      "id": "c9d0e1f2a3b9",
+      "name": "New posting poller",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * *",
+        "display": "0 8 * * *"
+      },
+      "schedule_display": "0 8 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "created_at": "2026-10-22T10:40:00-04:00",
+      "next_run_at": "2026-10-23T08:00:00-04:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "failure_streak": 0
+    },
+    {
+      "id": "d0e1f2a3b4ca",
+      "name": "Legacy import job",
+      "schedule_display": "legacy importer",
+      "repeat": {
+        "times": null,
+        "completed": 3
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": null,
+      "last_run_at": "2026-10-20T22:00:00-04:00",
+      "last_status": "skipped",
+      "failure_streak": 0
+    },
+    {
+      "id": "e1f2a3b4c5db",
+      "name": "Clock skew probe",
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 5 * * *",
+        "display": "15 5 * * *"
+      },
+      "schedule_display": "15 5 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 12
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "next_run_at": "2026-10-22T20:00:00Z",
+      "last_run_at": 1792587600,
+      "last_status": "ok",
+      "failure_streak": 0
+    }
+  ],
+  "updated_at": "2026-10-22T11:26:08.695463-04:00"
+}

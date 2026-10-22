@@ -1,0 +1,16 @@
+[
+  {
+    "id": "111111111111",
+    "name": "Bare list job one",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 6 * * *",
+      "display": "0 6 * * *"
+    },
+    "enabled": true,
+    "state": "scheduled",
+    "next_run_at": "2026-10-23T06:00:00+00:00",
+    "last_run_at": "2026-10-22T06:00:00+00:00",
+    "last_status": "ok"
+  }
+]
