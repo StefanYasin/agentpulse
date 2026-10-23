@@ -21,7 +21,7 @@ class AgentPulseServer(ThreadingHTTPServer):
     allow_reuse_address = True
 
 
-def make_handler(cron_dir, state_dir, refresh_seconds: int):
+def make_handler(cron_dir, state_dir, refresh_seconds: int, now=None):
     """Build a request handler bound to one state source."""
 
     class Handler(BaseHTTPRequestHandler):
@@ -50,7 +50,7 @@ def make_handler(cron_dir, state_dir, refresh_seconds: int):
 
         def _serve_page(self, send_body: bool) -> None:
             try:
-                snapshot = load_snapshot(cron_dir, state_dir=state_dir)
+                snapshot = load_snapshot(cron_dir, state_dir=state_dir, now=now)
             except CronStateError as exc:
                 body = render_error_page(str(exc), 503).encode("utf-8")
                 self._send(body, 503, "text/html; charset=utf-8", send_body)
@@ -60,7 +60,7 @@ def make_handler(cron_dir, state_dir, refresh_seconds: int):
 
         def _serve_state(self, send_body: bool) -> None:
             try:
-                snapshot = load_snapshot(cron_dir, state_dir=state_dir)
+                snapshot = load_snapshot(cron_dir, state_dir=state_dir, now=now)
             except CronStateError as exc:
                 payload = {
                     "error": str(exc),
@@ -72,7 +72,7 @@ def make_handler(cron_dir, state_dir, refresh_seconds: int):
 
         def _serve_health(self, send_body: bool) -> None:
             try:
-                snapshot = load_snapshot(cron_dir, state_dir=state_dir)
+                snapshot = load_snapshot(cron_dir, state_dir=state_dir, now=now)
             except CronStateError as exc:
                 self._send_json({"status": "error", "error": str(exc)}, 503, send_body)
                 return
@@ -120,9 +120,10 @@ def create_server(
     cron_dir=None,
     state_dir=None,
     refresh_seconds: int = DEFAULT_REFRESH,
+    now=None,
 ) -> AgentPulseServer:
     """Create (but do not start) the dashboard server."""
-    handler = make_handler(cron_dir, state_dir, refresh_seconds)
+    handler = make_handler(cron_dir, state_dir, refresh_seconds, now)
     return AgentPulseServer((host, port), handler)
 
 
@@ -133,9 +134,10 @@ def serve_forever(
     state_dir=None,
     refresh_seconds: int = DEFAULT_REFRESH,
     server: Optional[AgentPulseServer] = None,
+    now=None,
 ) -> None:
     """Block until interrupted."""
-    httpd = server or create_server(host, port, cron_dir, state_dir, refresh_seconds)
+    httpd = server or create_server(host, port, cron_dir, state_dir, refresh_seconds, now)
     try:
         httpd.serve_forever(poll_interval=0.5)
     finally:

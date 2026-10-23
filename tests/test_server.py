@@ -7,6 +7,7 @@ import urllib.error
 import urllib.request
 
 import pytest
+from conftest import FIXED_NOW
 
 from agentpulse.server import create_server
 
@@ -32,7 +33,7 @@ def get(url, method="GET"):
 
 
 def test_api_state():
-    server = create_server(port=0, cron_dir=FIXTURES)
+    server = create_server(port=0, cron_dir=FIXTURES, now=FIXED_NOW)
     with running(server) as base:
         with get(base + "/api/state") as response:
             assert response.status == 200
@@ -58,7 +59,7 @@ def test_dashboard_page():
 
 
 def test_healthz():
-    server = create_server(port=0, cron_dir=FIXTURES)
+    server = create_server(port=0, cron_dir=FIXTURES, now=FIXED_NOW)
     with running(server) as base:
         with get(base + "/healthz") as response:
             payload = json.loads(response.read().decode("utf-8"))
@@ -69,7 +70,7 @@ def test_healthz():
 
 
 def test_head_has_no_body():
-    server = create_server(port=0, cron_dir=FIXTURES)
+    server = create_server(port=0, cron_dir=FIXTURES, now=FIXED_NOW)
     with running(server) as base:
         with get(base + "/", method="HEAD") as response:
             assert response.status == 200
@@ -78,7 +79,7 @@ def test_head_has_no_body():
 
 
 def test_unknown_path_returns_404():
-    server = create_server(port=0, cron_dir=FIXTURES)
+    server = create_server(port=0, cron_dir=FIXTURES, now=FIXED_NOW)
     with running(server) as base:
         with pytest.raises(urllib.error.HTTPError) as excinfo:
             get(base + "/nope")
@@ -102,7 +103,7 @@ def test_missing_state_returns_503(tmp_path):
 
 
 def test_favicon_is_no_content():
-    server = create_server(port=0, cron_dir=FIXTURES)
+    server = create_server(port=0, cron_dir=FIXTURES, now=FIXED_NOW)
     with running(server) as base:
         with get(base + "/favicon.ico") as response:
             assert response.status == 204
