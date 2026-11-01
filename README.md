@@ -116,3 +116,13 @@ The suite runs against anonymized fixtures in `tests/fixtures/` that were copied
 MIT
 
 Built by [Stefan Yasin](https://stefanyasin.github.io/)
+
+
+## Operations
+
+Read-only by design:
+
+- **No write path:** the dashboard reads the scheduler's `jobs.json` and state files. There is no endpoint that can change a job.
+- **Raw values preserved:** normalized statuses keep the scheduler's original value in `raw_status`, so nothing is hidden and nothing is invented.
+- **Failures surface fast:** failure streaks, drift (a job whose `next_run_at` is in the past), and error text are on the page, not buried in JSON.
+- **Tested:** the suite runs in CI and passes on a fresh clone.
