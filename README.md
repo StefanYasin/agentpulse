@@ -1,5 +1,9 @@
 # agentpulse
 
+[![CI](https://github.com/StefanYasin/agentpulse/actions/workflows/ci.yml/badge.svg)](https://github.com/StefanYasin/agentpulse/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](pyproject.toml)
+
 A read-only operations dashboard for my Hermes cron fleet. It reads the scheduler's `jobs.json`, normalizes every job, and shows what is failing, what is overdue, and what runs next.
 
 I built this because `jobs.json` is a 28 job wall of JSON, and the failures I actually care about are easy to miss: a backup job erroring for nine runs straight, or a delivery target that silently stopped resolving.
